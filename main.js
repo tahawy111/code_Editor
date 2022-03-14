@@ -1,37 +1,30 @@
-function input() {
-  let textArea = document.getElementById("textarea").value;
-  let output = document.getElementById("output");
-  window.localStorage.setItem("textValue", textArea);
-  output.innerHTML = window.localStorage.getItem("textValue");
-}
+// function input() {
+//   let textArea = document.getElementById("textarea").value;
+//   let output = document.getElementById("output");
 
-function CodeEditor() {
-  let textArea = document.getElementById("textarea").value;
-  let button = document.getElementById("button");
-  let output = document.getElementById("output");
-  if (window.localStorage.getItem("textValue")) {
-    // update localstorage value
+//   output.innerHTML = textArea;
+// }
+
+let textArea = document.getElementById("textarea").value;
+let button = document.getElementById("button");
+let output = document.getElementById("output");
+// window.localStorage.setItem("textValue", textArea);
+
+button.addEventListener("click", () => {
+  if (window.localStorage.getItem("textValue") !== textArea) {
+    let output = document.getElementById("output");
     let textArea = document.getElementById("textarea").value;
-    if (window.localStorage.getItem("textValue") !== textArea) {
-      window.localStorage.setItem("textValue", textArea);
-      output.innerHTML = window.localStorage.getItem("textValue");
-    } else {
-      output.innerHTML = window.localStorage.getItem("textValue");
-    }
-  }
-  button.addEventListener("click", function () {
+    window.localStorage.setItem("textValue", textArea);
+    output.innerHTML = window.localStorage.getItem("textValue");
+    console.log("no");
+  } else if (window.localStorage.getItem("textValue") === textArea) {
     let textArea = document.getElementById("textarea").value;
     let output = document.getElementById("output");
-    // update localstorage value
-    if (window.localStorage.getItem("textValue") !== textArea) {
-      window.localStorage.setItem("textValue", textArea);
-      output.innerHTML = window.localStorage.getItem("textValue");
-    } else {
-      output.innerHTML = window.localStorage.getItem("textValue");
-    }
+    output.innerHTML = window.localStorage.getItem("textValue");
+    console.log("yes");
+  }
+});
 
-    //     console.log(window.localStorage.getItem("textValue"));
-    //     console.log(textArea);
-  });
-}
-CodeEditor();
+// document.addEventListener("load", () => {
+//   output.innerHTML = window.localStorage.getItem("textValue");
+// });
