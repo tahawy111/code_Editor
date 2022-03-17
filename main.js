@@ -1,30 +1,11 @@
-// function input() {
-//   let textArea = document.getElementById("textarea").value;
-//   let output = document.getElementById("output");
 
-//   output.innerHTML = textArea;
-// }
-
-let textArea = document.getElementById("textarea").value;
+let textArea = document.getElementById("textarea");
 let button = document.getElementById("button");
 let output = document.getElementById("output");
-// window.localStorage.setItem("textValue", textArea);
-
+if (localStorage.getItem("result")) {
+  textArea.value = localStorage.getItem("result");
+}
 button.addEventListener("click", () => {
-  if (window.localStorage.getItem("textValue") !== textArea) {
-    let output = document.getElementById("output");
-    let textArea = document.getElementById("textarea").value;
-    window.localStorage.setItem("textValue", textArea);
-    output.innerHTML = window.localStorage.getItem("textValue");
-    console.log("no");
-  } else if (window.localStorage.getItem("textValue") === textArea) {
-    let textArea = document.getElementById("textarea").value;
-    let output = document.getElementById("output");
-    output.innerHTML = window.localStorage.getItem("textValue");
-    console.log("yes");
-  }
+  output.innerHTML = textArea.value;
+  localStorage.setItem("result", textArea.value);
 });
-
-// document.addEventListener("load", () => {
-//   output.innerHTML = window.localStorage.getItem("textValue");
-// });
